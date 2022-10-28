@@ -1,0 +1,45 @@
+{% extends "employees/base.html" %}
+
+{% block title %}
+    Сотрудники
+{% endblock %}
+
+{% block body %}
+    <div class="my-2">
+    <h3>Сотрудники</h3>
+    <div>
+
+  <div class="row">
+    <div class="col col-md-7">
+       <ul class="list-group">
+           {% for empl in object_list %}
+               <li class="list-group-item">
+                <a class="text-decoration-none" href="{% url 'employees:details' empl.pk %}">
+                   {{ empl.surname }} {{ empl.firstname }}</a>
+                   ({{ empl.job }})
+
+                {% if perms.employees.delete_employee %}
+                    <span class="float-end">
+                        <a class="btn btn-sm btn-outline-danger"
+                            href="{% url 'employees:delete-employee' empl.pk %}">
+                            Удалить </a>
+                    </span>
+                {% endif %}
+
+               </li>
+           {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+{#  {% if user.is_authenticated %}#}
+
+  {% if perms.employees.create_employee %}
+    <div class="my-2">
+        <a class="btn btn-outline-info"
+           href="{% url 'employees:create-employee' %}"
+         > Новый сотрудник </a>
+    </div>
+  {% endif %}
+
+{% endblock %}

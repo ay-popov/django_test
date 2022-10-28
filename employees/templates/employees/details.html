@@ -1,0 +1,22 @@
+{% extends "employees/base.html" %}
+
+{% block title %}
+    {{ employee.name }} details
+{% endblock %}
+
+{% block body %}
+    <h2>Сотрудник <strong>{{ employee.name }}</strong></h2>
+    <div class="p-4">
+      <b><p>Фамилия:</b> {{ employee.surname }}</p>
+       <b><p>Имя:</b> {{ employee.firstname }}</p>
+       <b><p>Отчество:</b> {{ employee.patronymic }}</p>
+       <b><p>Табельный номер:</b> {{ employee.personnel_number }}</p>
+       <b><p>Email:</b> {{ employee.email }}</p>
+       <b><p>Должность:</b> {{ employee.job }}</p>
+    </div>
+
+    <div class="">
+     <a class="btn btn-sm btn-outline-danger"
+             href="{% url 'employees:index' %}">Список сотрудников</a>
+    </div>
+{% endblock %}
