@@ -39,7 +39,6 @@ class EmployeeDeleteView(DeleteView):
 
 
 class EmployeeCreateView(CreateView):
-    # model = Employee
     # fields = ["surname", "firstname", "patronymic", "personnel_number", "email", "job"]
     # success_url = reverse_lazy("employees:index")
 
